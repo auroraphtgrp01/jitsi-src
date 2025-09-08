@@ -8,7 +8,7 @@ const webpack = require('webpack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 /**
- * The URL of the Jitsi Meet deployment to be proxy to in the context of
+ * The URL of the Duy Tan University deployment to be proxy to in the context of
  * development with webpack-dev-server.
  */
 const devServerProxyTarget
@@ -46,11 +46,11 @@ function getBundleAnalyzerPlugin(analyzeBundle, name) {
         return [];
     }
 
-    return [ new BundleAnalyzerPlugin({
+    return [new BundleAnalyzerPlugin({
         analyzerMode: 'disabled',
         generateStatsFile: true,
         statsFilename: `${name}-stats.json`
-    }) ];
+    })];
 }
 
 /**
@@ -71,13 +71,13 @@ function devServerProxyBypass({ path }) {
     }
 
     if (tpath.startsWith('/css/')
-            || tpath.startsWith('/doc/')
-            || tpath.startsWith('/fonts/')
-            || tpath.startsWith('/images/')
-            || tpath.startsWith('/lang/')
-            || tpath.startsWith('/sounds/')
-            || tpath.startsWith('/static/')
-            || tpath.endsWith('.wasm')) {
+        || tpath.startsWith('/doc/')
+        || tpath.startsWith('/fonts/')
+        || tpath.startsWith('/images/')
+        || tpath.startsWith('/lang/')
+        || tpath.startsWith('/sounds/')
+        || tpath.startsWith('/static/')
+        || tpath.endsWith('.wasm')) {
 
         return tpath;
     }
@@ -107,7 +107,7 @@ function getConfig(options = {}) {
         devtool: isProduction ? 'source-map' : 'eval-source-map',
         mode: isProduction ? 'production' : 'development',
         module: {
-            rules: [ {
+            rules: [{
                 // Transpile ES2015 (aka ES6) to ES5. Accept the JSX syntax by React
                 // as well.
 
@@ -161,13 +161,13 @@ function getConfig(options = {}) {
                 ]
             }, {
                 test: /\.svg$/,
-                use: [ {
+                use: [{
                     loader: '@svgr/webpack',
                     options: {
                         dimensions: false,
                         expandProps: 'start'
                     }
-                } ]
+                }]
             }, {
                 test: /\.tsx?$/,
                 exclude: /node_modules/,
@@ -176,7 +176,7 @@ function getConfig(options = {}) {
                     configFile: 'tsconfig.web.json',
                     transpileOnly: !isProduction // Skip type checking for dev builds.,
                 }
-            } ]
+            }]
         },
         node: {
             // Allow the use of the real filename of the module being executed. By
@@ -196,11 +196,11 @@ function getConfig(options = {}) {
         },
         plugins: [
             detectCircularDeps
-                && new CircularDependencyPlugin({
-                    allowAsyncCycles: false,
-                    exclude: /node_modules/,
-                    failOnError: false
-                })
+            && new CircularDependencyPlugin({
+                allowAsyncCycles: false,
+                exclude: /node_modules/,
+                failOnError: false
+            })
         ].filter(Boolean),
         resolve: {
             alias: {
@@ -254,7 +254,7 @@ function getDevServerConfig() {
         hot: true,
         proxy: [
             {
-                context: [ '/' ],
+                context: ['/'],
                 bypass: devServerProxyBypass,
                 secure: false,
                 target: devServerProxyTarget,
@@ -288,7 +288,8 @@ module.exports = (_env, argv) => {
     };
 
     return [
-        { ...config,
+        {
+            ...config,
             entry: {
                 'app.bundle': './app.js'
             },
@@ -312,8 +313,10 @@ module.exports = (_env, argv) => {
                 })
             ],
 
-            performance: getPerformanceHints(perfHintOptions, 5 * 1024 * 1024) },
-        { ...config,
+            performance: getPerformanceHints(perfHintOptions, 5 * 1024 * 1024)
+        },
+        {
+            ...config,
             entry: {
                 'alwaysontop': './react/features/always-on-top/index.tsx'
             },
@@ -321,8 +324,10 @@ module.exports = (_env, argv) => {
                 ...config.plugins,
                 ...getBundleAnalyzerPlugin(analyzeBundle, 'alwaysontop')
             ],
-            performance: getPerformanceHints(perfHintOptions, 800 * 1024) },
-        { ...config,
+            performance: getPerformanceHints(perfHintOptions, 800 * 1024)
+        },
+        {
+            ...config,
             entry: {
                 'close3': './static/close3.js'
             },
@@ -330,21 +335,27 @@ module.exports = (_env, argv) => {
                 ...config.plugins,
                 ...getBundleAnalyzerPlugin(analyzeBundle, 'close3')
             ],
-            performance: getPerformanceHints(perfHintOptions, 128 * 1024) },
+            performance: getPerformanceHints(perfHintOptions, 128 * 1024)
+        },
 
-        { ...config,
+        {
+            ...config,
             entry: {
                 'external_api': './modules/API/external/index.js'
             },
-            output: { ...config.output,
+            output: {
+                ...config.output,
                 library: 'JitsiMeetExternalAPI',
-                libraryTarget: 'umd' },
+                libraryTarget: 'umd'
+            },
             plugins: [
                 ...config.plugins,
                 ...getBundleAnalyzerPlugin(analyzeBundle, 'external_api')
             ],
-            performance: getPerformanceHints(perfHintOptions, 95 * 1024) },
-        { ...config,
+            performance: getPerformanceHints(perfHintOptions, 95 * 1024)
+        },
+        {
+            ...config,
             entry: {
                 'face-landmarks-worker': './react/features/face-landmarks/faceLandmarksWorker.ts'
             },
@@ -352,8 +363,10 @@ module.exports = (_env, argv) => {
                 ...config.plugins,
                 ...getBundleAnalyzerPlugin(analyzeBundle, 'face-landmarks-worker')
             ],
-            performance: getPerformanceHints(perfHintOptions, 1024 * 1024 * 2) },
-        { ...config, /**
+            performance: getPerformanceHints(perfHintOptions, 1024 * 1024 * 2)
+        },
+        {
+            ...config, /**
              * The NoiseSuppressorWorklet is loaded in an audio worklet which doesn't have the same
              * context as a normal window, (e.g. self/window is not defined).
              * While running a production build webpack's boilerplate code doesn't introduce any
@@ -368,13 +381,15 @@ module.exports = (_env, argv) => {
                     './react/features/stream-effects/noise-suppression/NoiseSuppressorWorklet.ts'
             },
 
-            module: { rules: [
-                ...config.module.rules,
-                {
-                    test: resolve(__dirname, 'node_modules/webpack-dev-server/client'),
-                    loader: 'null-loader'
-                }
-            ] },
+            module: {
+                rules: [
+                    ...config.module.rules,
+                    {
+                        test: resolve(__dirname, 'node_modules/webpack-dev-server/client'),
+                        loader: 'null-loader'
+                    }
+                ]
+            },
             plugins: [
             ],
             performance: getPerformanceHints(perfHintOptions, 1024 * 1024 * 2),
@@ -383,9 +398,11 @@ module.exports = (_env, argv) => {
                 ...config.output,
 
                 globalObject: 'AudioWorkletGlobalScope'
-            } },
+            }
+        },
 
-        { ...config,
+        {
+            ...config,
             entry: {
                 'screenshot-capture-worker': './react/features/screenshot-capture/worker.ts'
             },
@@ -393,6 +410,7 @@ module.exports = (_env, argv) => {
                 ...config.plugins,
                 ...getBundleAnalyzerPlugin(analyzeBundle, 'screenshot-capture-worker')
             ],
-            performance: getPerformanceHints(perfHintOptions, 30 * 1024) }
+            performance: getPerformanceHints(perfHintOptions, 30 * 1024)
+        }
     ];
 };

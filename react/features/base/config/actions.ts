@@ -1,21 +1,14 @@
 // @ts-expect-error
-import { jitsiLocalStorage } from '@jitsi/js-utils';
+import { jitsiLocalStorage } from "@jitsi/js-utils";
 
-import { IStore } from '../../app/types';
-import { addKnownDomains } from '../known-domains/actions';
-import { parseURIString } from '../util/uri';
+import { IStore } from "../../app/types";
+import { addKnownDomains } from "../known-domains/actions";
+import { parseURIString } from "../util/uri";
 
-import {
-    CONFIG_WILL_LOAD,
-    LOAD_CONFIG_ERROR,
-    OVERWRITE_CONFIG,
-    SET_CONFIG,
-    UPDATE_CONFIG
-} from './actionTypes';
-import { IConfig } from './configType';
-import { _CONFIG_STORE_PREFIX } from './constants';
-import { setConfigFromURLParams } from './functions.any';
-
+import { CONFIG_WILL_LOAD, LOAD_CONFIG_ERROR, OVERWRITE_CONFIG, SET_CONFIG, UPDATE_CONFIG } from "./actionTypes";
+import { IConfig } from "./configType";
+import { _CONFIG_STORE_PREFIX } from "./constants";
+import { setConfigFromURLParams } from "./functions.any";
 
 /**
  * Updates the config with new options.
@@ -26,12 +19,12 @@ import { setConfigFromURLParams } from './functions.any';
 export function updateConfig(config: IConfig) {
     return {
         type: UPDATE_CONFIG,
-        config
+        config,
     };
 }
 
 /**
- * Signals that the configuration (commonly known in Jitsi Meet as config.js)
+ * Signals that the configuration (commonly known in Duy Tan University as config.js)
  * for a specific locationURL will be loaded now.
  *
  * @param {URL} locationURL - The URL of the location which necessitated the
@@ -47,12 +40,12 @@ export function configWillLoad(locationURL: URL, room: string) {
     return {
         type: CONFIG_WILL_LOAD,
         locationURL,
-        room
+        room,
     };
 }
 
 /**
- * Signals that a configuration (commonly known in Jitsi Meet as config.js)
+ * Signals that a configuration (commonly known in Duy Tan University as config.js)
  * could not be loaded due to a specific error.
  *
  * @param {Error} error - The {@code Error} which prevented the successful
@@ -69,7 +62,7 @@ export function loadConfigError(error: Error, locationURL: URL) {
     return {
         type: LOAD_CONFIG_ERROR,
         error,
-        locationURL
+        locationURL,
     };
 }
 
@@ -85,7 +78,7 @@ export function loadConfigError(error: Error, locationURL: URL) {
 export function overwriteConfig(config: Object) {
     return {
         type: OVERWRITE_CONFIG,
-        config
+        config,
     };
 }
 
@@ -99,8 +92,8 @@ export function overwriteConfig(config: Object) {
  * @returns {Function}
  */
 export function setConfig(config: IConfig = {}) {
-    return (dispatch: IStore['dispatch'], getState: IStore['getState']) => {
-        const { locationURL } = getState()['features/base/connection'];
+    return (dispatch: IStore["dispatch"], getState: IStore["getState"]) => {
+        const { locationURL } = getState()["features/base/connection"];
 
         // Now that the loading of the config was successful override the values
         // with the parameters passed in the hash part of the location URI.
@@ -110,59 +103,55 @@ export function setConfig(config: IConfig = {}) {
         // Only the config will be overridden on React Native, as the other
         // globals will be undefined here. It's intentional - we do not care to
         // override those configs yet.
-        locationURL
-            && setConfigFromURLParams(
-
+        locationURL &&
+            setConfigFromURLParams(
                 // On Web the config also comes from the window.config global,
                 // but it is resolved in the loadConfig procedure.
                 config,
                 window.interfaceConfig,
-                locationURL);
+                locationURL
+            );
 
         let { bosh } = config;
 
         if (bosh) {
             // Normalize the BOSH URL.
-            if (bosh.startsWith('//')) {
+            if (bosh.startsWith("//")) {
                 // By default our config.js doesn't include the protocol.
                 bosh = `${locationURL?.protocol}${bosh}`;
-            } else if (bosh.startsWith('/')) {
+            } else if (bosh.startsWith("/")) {
                 // Handle relative URLs, which won't work on mobile.
-                const {
-                    protocol,
-                    host,
-                    contextRoot
-                } = parseURIString(locationURL?.href);
+                const { protocol, host, contextRoot } = parseURIString(locationURL?.href);
 
-                bosh = `${protocol}//${host}${contextRoot || '/'}${bosh.substr(1)}`;
+                bosh = `${protocol}//${host}${contextRoot || "/"}${bosh.substr(1)}`;
             }
             config.bosh = bosh;
         }
 
         dispatch({
             type: SET_CONFIG,
-            config
+            config,
         });
     };
 }
 
 /**
- * Stores a specific Jitsi Meet config.js object into {@code localStorage}.
+ * Stores a specific Duy Tan University config.js object into {@code localStorage}.
  *
  * @param {string} baseURL - The base URL from which the config.js was
  * downloaded.
- * @param {Object} config - The Jitsi Meet config.js to store.
+ * @param {Object} config - The Duy Tan University config.js to store.
  * @returns {Function}
  */
 export function storeConfig(baseURL: string, config: Object) {
-    return (dispatch: IStore['dispatch']) => {
+    return (dispatch: IStore["dispatch"]) => {
         // Try to store the configuration in localStorage. If the deployment
         // specified 'getroom' as a function, for example, it does not make
         // sense to and it will not be stored.
         let b = false;
 
         try {
-            if (typeof window.config === 'undefined' || window.config !== config) {
+            if (typeof window.config === "undefined" || window.config !== config) {
                 jitsiLocalStorage.setItem(`${_CONFIG_STORE_PREFIX}/${baseURL}`, JSON.stringify(config));
                 b = true;
             }

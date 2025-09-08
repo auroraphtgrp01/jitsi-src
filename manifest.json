@@ -7,8 +7,8 @@
       "platform": "chromeos_play"
     }
   ],
-  "short_name": "Jitsi Meet",
-  "name": "Jitsi Meet",
+  "short_name": "Duy Tan University",
+  "name": "Duy Tan University",
   "icons": [
     {
       "src": "static/pwa/icons/icon192.png",

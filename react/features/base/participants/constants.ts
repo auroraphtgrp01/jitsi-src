@@ -1,10 +1,10 @@
-import { IconPhoneRinging, IconWhiteboard } from '../icons/svg';
+import { IconPhoneRinging, IconWhiteboard } from "../icons/svg";
 
 /**
  * The relative path to the default/stock avatar (image) file used on both
  * Web/React and mobile/React Native (for the purposes of consistency).
  *
- * XXX (1) Web/React utilizes relativity on the Jitsi Meet deployment.
+ * XXX (1) Web/React utilizes relativity on the Duy Tan University deployment.
  * (2) Mobile/React Native utilizes relativity on the local file system at build
  * time. Unfortunately, the packager of React Native cannot deal with the
  * {@code const} early enough for {@code require} to succeed at runtime.
@@ -13,12 +13,12 @@ import { IconPhoneRinging, IconWhiteboard } from '../icons/svg';
  *
  * @type {string}
  */
-export const DEFAULT_AVATAR_RELATIVE_PATH = 'images/avatar.png';
+export const DEFAULT_AVATAR_RELATIVE_PATH = "images/avatar.png";
 
 /**
  * The value for the "var" attribute of feature tag in disco-info packets.
  */
-export const DISCO_REMOTE_CONTROL_FEATURE = 'http://jitsi.org/meet/remotecontrol';
+export const DISCO_REMOTE_CONTROL_FEATURE = "http://jitsi.org/meet/remotecontrol";
 
 /**
  * Icon URL for jigasi participants.
@@ -33,7 +33,7 @@ export const JIGASI_PARTICIPANT_ICON = IconPhoneRinging;
  *
  * @type {string}
  */
-export const LOCAL_PARTICIPANT_DEFAULT_ID = 'local';
+export const LOCAL_PARTICIPANT_DEFAULT_ID = "local";
 
 /**
  * Max length of the display names.
@@ -48,7 +48,7 @@ export const MAX_DISPLAY_NAME_LENGTH = 50;
  *
  * @type {string}
  */
-export const PARTICIPANT_JOINED_SOUND_ID = 'PARTICIPANT_JOINED_SOUND';
+export const PARTICIPANT_JOINED_SOUND_ID = "PARTICIPANT_JOINED_SOUND";
 
 /**
  * The identifier of the sound to be played when remote participant leaves
@@ -56,7 +56,7 @@ export const PARTICIPANT_JOINED_SOUND_ID = 'PARTICIPANT_JOINED_SOUND';
  *
  * @type {string}
  */
-export const PARTICIPANT_LEFT_SOUND_ID = 'PARTICIPANT_LEFT_SOUND';
+export const PARTICIPANT_LEFT_SOUND_ID = "PARTICIPANT_LEFT_SOUND";
 
 /**
  * The set of possible XMPP MUC roles for conference participants.
@@ -64,9 +64,9 @@ export const PARTICIPANT_LEFT_SOUND_ID = 'PARTICIPANT_LEFT_SOUND';
  * @enum {string}
  */
 export const PARTICIPANT_ROLE = {
-    MODERATOR: 'moderator',
-    NONE: 'none',
-    PARTICIPANT: 'participant'
+    MODERATOR: "moderator",
+    NONE: "none",
+    PARTICIPANT: "participant",
 };
 
 /**

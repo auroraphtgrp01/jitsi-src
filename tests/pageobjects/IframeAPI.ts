@@ -1,6 +1,6 @@
-import { LOG_PREFIX } from '../helpers/browserLogger';
+import { LOG_PREFIX } from "../helpers/browserLogger";
 
-import BasePageObject from './BasePageObject';
+import BasePageObject from "./BasePageObject";
 
 /**
  * The Iframe API and helpers from iframeAPITest.html
@@ -11,16 +11,15 @@ export default class IframeAPI extends BasePageObject {
      * @param event
      */
     getEventResult(event: string): Promise<any> {
-        return this.participant.execute(
-            eventName => {
-                const result = window.jitsiAPI.test[eventName];
+        return this.participant.execute((eventName) => {
+            const result = window.jitsiAPI.test[eventName];
 
-                if (!result) {
-                    return false;
-                }
+            if (!result) {
+                return false;
+            }
 
-                return result;
-            }, event);
+            return result;
+        }, event);
     }
 
     /**
@@ -28,10 +27,9 @@ export default class IframeAPI extends BasePageObject {
      * @param event
      */
     clearEventResults(event: string) {
-        return this.participant.execute(
-            eventName => {
-                window.jitsiAPI.test[eventName] = undefined;
-            }, event);
+        return this.participant.execute((eventName) => {
+            window.jitsiAPI.test[eventName] = undefined;
+        }, event);
     }
 
     /**
@@ -46,12 +44,18 @@ export default class IframeAPI extends BasePageObject {
                     return;
                 }
                 console.log(`${new Date().toISOString()} ${prefix}iframeAPI - Adding listener for event: ${event}`);
-                window.jitsiAPI.addListener(event, evt => {
+                window.jitsiAPI.addListener(event, (evt) => {
                     console.log(
-                        `${new Date().toISOString()} ${prefix}iframeAPI - Received ${event} event: ${JSON.stringify(evt)}`);
+                        `${new Date().toISOString()} ${prefix}iframeAPI - Received ${event} event: ${JSON.stringify(
+                            evt
+                        )}`
+                    );
                     window.jitsiAPI.test[event] = evt;
                 });
-            }, eventName, LOG_PREFIX);
+            },
+            eventName,
+            LOG_PREFIX
+        );
     }
 
     /**
@@ -75,9 +79,10 @@ export default class IframeAPI extends BasePageObject {
      */
     executeCommand(command: string, ...args: any[]) {
         return this.participant.execute(
-            (commandName, commandArgs) =>
-                window.jitsiAPI.executeCommand(commandName, ...commandArgs)
-            , command, args);
+            (commandName, commandArgs) => window.jitsiAPI.executeCommand(commandName, ...commandArgs),
+            command,
+            args
+        );
     }
 
     /**
@@ -88,7 +93,7 @@ export default class IframeAPI extends BasePageObject {
     }
 
     /**
-     * Removes the embedded Jitsi Meet conference.
+     * Removes the embedded Duy Tan University conference.
      */
     dispose() {
         return this.participant.execute(() => window.jitsiAPI.dispose());
@@ -98,20 +103,32 @@ export default class IframeAPI extends BasePageObject {
      * Invite the given participant to the meeting via PSTN.
      */
     invitePhone(value: string) {
-        return this.participant.execute(v => window.jitsiAPI.invite([ {
-            type: 'phone',
-            number: v
-        } ]), value);
+        return this.participant.execute(
+            (v) =>
+                window.jitsiAPI.invite([
+                    {
+                        type: "phone",
+                        number: v,
+                    },
+                ]),
+            value
+        );
     }
 
     /**
      * Invite the given participant to the meeting via sip (sip jibri).
      */
     inviteSIP(value: string) {
-        return this.participant.execute(v => window.jitsiAPI.invite([ {
-            type: 'sip',
-            address: v
-        } ]), value);
+        return this.participant.execute(
+            (v) =>
+                window.jitsiAPI.invite([
+                    {
+                        type: "sip",
+                        address: v,
+                    },
+                ]),
+            value
+        );
     }
 
     /**
@@ -119,7 +136,7 @@ export default class IframeAPI extends BasePageObject {
      * @param options
      */
     startRecording(options: any) {
-        return this.participant.execute(o => window.jitsiAPI.startRecording(o), options);
+        return this.participant.execute((o) => window.jitsiAPI.startRecording(o), options);
     }
 
     /**
@@ -127,7 +144,7 @@ export default class IframeAPI extends BasePageObject {
      * @param mode
      */
     stopRecording(mode: string) {
-        return this.participant.execute(m => window.jitsiAPI.stopRecording(m), mode);
+        return this.participant.execute((m) => window.jitsiAPI.stopRecording(m), mode);
     }
 
     /**

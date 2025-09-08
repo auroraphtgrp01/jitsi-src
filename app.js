@@ -1,4 +1,4 @@
-/* Jitsi Meet app main entrypoint. */
+/* Duy Tan University app main entrypoint. */
 
 // Re-export jQuery
 // FIXME: Remove this requirement from torture tests.
@@ -17,7 +17,7 @@ import 'focus-visible';
 * Support source image types: Canvas.
 */
 if (!('createImageBitmap' in window)) {
-    window.createImageBitmap = function(data) {
+    window.createImageBitmap = function (data) {
         return new Promise((resolve, reject) => {
             let dataURL;
 

@@ -1,7 +1,7 @@
-Prosody configuration for Jitsi Meet for Debian
+Prosody configuration for Duy Tan University for Debian
 ----------------------------
 
-Jitsi Meet is a WebRTC video conferencing application. This package contains 
-configuration of prosody which are needed for Jitsi Meet to work.
+Duy Tan University is a WebRTC video conferencing application. This package contains 
+configuration of prosody which are needed for Duy Tan University to work.
 
  -- Yasen Pramatarov <yasen@bluejimp.com>  Mon, 30 Jun 2014 23:05:18 +0100
