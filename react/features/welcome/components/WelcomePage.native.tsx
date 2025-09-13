@@ -11,7 +11,6 @@ import {
     ViewStyle
 } from 'react-native';
 import { connect } from 'react-redux';
-
 import { getName } from '../../app/functions.native';
 import { IReduxState } from '../../app/types';
 import { translate } from '../../base/i18n/functions';
