@@ -22,6 +22,11 @@ import Tabs from "./Tabs";
  */
 export const ROOM_NAME_VALIDATE_PATTERN_STR = "^[^?&:\u0022\u0027%#]+$";
 
+// Local declaration to satisfy type checking for this file.
+// In the project this is provided globally via declaration files.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+declare const interfaceConfig: any;
+
 /**
  * The Web container rendering the welcome page.
  *
@@ -60,6 +65,15 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
 
             generateRoomNames: interfaceConfig.GENERATE_ROOMNAMES_ON_WELCOME_PAGE,
         };
+
+        this._currentSlide = 0;
+        this._slides = [
+            { src: "./images/detailed-video-interface.png", alt: "Video call interface" },
+            { src: "./images/Online-Meeting-All-User.webp", alt: "DuyTan University Logo" },
+            { src: "./images/Online-Meeting&Join.webp", alt: "DuyTan University Logo" },
+            { src: "./images/Home-Setting-Meeting.webp", alt: "DuyTan University Logo" },
+            { src: "./images/Home-Create-Meeting.webp", alt: "DuyTan University Logo" },
+        ];
 
         /**
          * Used To display a warning massage if the title input has no allow character.
@@ -131,6 +145,8 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
         this._setRoomInputRef = this._setRoomInputRef.bind(this);
         this._setAdditionalToolbarContentRef = this._setAdditionalToolbarContentRef.bind(this);
         this._renderFooter = this._renderFooter.bind(this);
+        this._onPrevClick = this._onPrevClick.bind(this);
+        this._onNextClick = this._onNextClick.bind(this);
     }
 
     /**
@@ -163,6 +179,11 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
         if (this._shouldShowAdditionalCard()) {
             this._additionalCardRef?.appendChild(this._additionalCardTemplate?.content.cloneNode(true) as Node);
         }
+
+        // Auto-advance slides every 5 seconds
+        this._slideIntervalId = window.setInterval(() => {
+            this._onNextClick();
+        }, 5000);
     }
 
     /**
@@ -175,6 +196,11 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
         super.componentWillUnmount();
 
         document.body.classList.remove("welcome-page");
+
+        if (this._slideIntervalId) {
+            clearInterval(this._slideIntervalId);
+            this._slideIntervalId = undefined;
+        }
     }
 
     /**
@@ -186,6 +212,8 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
     override render() {
         const { _moderatedRoomServiceUrl, t } = this.props;
         const { DEFAULT_WELCOME_PAGE_LOGO_URL, DISPLAY_WELCOME_FOOTER } = interfaceConfig;
+        const slides = this._slides;
+        const currentSlide = this._currentSlide;
         const showAdditionalCard = this._shouldShowAdditionalCard();
         const showAdditionalContent = this._shouldShowAdditionalContent();
         const showAdditionalToolbarContent = this._shouldShowAdditionalToolbarContent();
@@ -472,7 +500,7 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
                                         </button>
                                         <span className="sign-in-text">Sign In Required</span>
                                     </div>
-                                    <button className="button button-outline">
+                                    <button className="button button-outline" style={{cursor: "not-allowed"}}>
                                         <span
                                             className="button-icon"
                                             style={{ borderRadius: "2px", backgroundColor: "rgba(243, 244, 246, 1)" }}
@@ -498,7 +526,7 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
                                         </span>
                                         Join Meeting
                                     </button>
-                                    <button className="button button-outline">
+                                    <button className="button button-outline" style={{cursor: "not-allowed"}}>
                                         <span
                                             className="button-icon"
                                             style={{ borderRadius: "2px", backgroundColor: "rgba(243, 244, 246, 1)" }}
@@ -532,7 +560,7 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
                                     </h3>
                                 </div>
                                 <div className="card">
-                                    <img src="./images/detailed-video-interface.png" alt="Video call interface" />
+                                    <img src={slides[currentSlide]?.src} alt={slides[currentSlide]?.alt} />
                                 </div>
                                 <div className="features-text">Features that make it super easy to meet online!</div>
                                 <div className="navigation">
@@ -546,7 +574,7 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
                                             borderRadius: "18px",
                                         }}
                                     >
-                                        <button className="nav-button">
+                                        <button className="nav-button" onClick={this._onPrevClick}>
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 width="24"
@@ -563,11 +591,16 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
                                             </svg>
                                         </button>
                                         <div className="dots">
-                                            <div className="dot dot-active"></div>
-                                            <div className="dot dot-inactive"></div>
-                                            <div className="dot dot-inactive"></div>
+                                            {slides.map((_, index) => (
+                                                <div
+                                                    key={index}
+                                                    className={`dot ${
+                                                        index === currentSlide ? "dot-active" : "dot-inactive"
+                                                    }`}
+                                                ></div>
+                                            ))}
                                         </div>
-                                        <button className="nav-button">
+                                        <button className="nav-button" onClick={this._onNextClick}>
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 width="24"
@@ -592,6 +625,44 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
             </>
         );
     }
+
+    /**
+     * Go to previous slide in the carousel.
+     *
+     * @private
+     * @returns {void}
+     */
+    _onPrevClick() {
+        const slides = this._slides;
+        const currentSlide = this._currentSlide;
+        if (!slides.length) {
+            return;
+        }
+        const nextIndex = (currentSlide - 1 + slides.length) % slides.length;
+        this._currentSlide = nextIndex;
+        this.forceUpdate();
+    }
+
+    /**
+     * Go to next slide in the carousel.
+     *
+     * @private
+     * @returns {void}
+     */
+    _onNextClick() {
+        const slides = this._slides;
+        const currentSlide = this._currentSlide;
+        if (!slides.length) {
+            return;
+        }
+        const nextIndex = (currentSlide + 1) % slides.length;
+        this._currentSlide = nextIndex;
+        this.forceUpdate();
+    }
+
+    _slides: Array<{ src: string; alt: string }>;
+    _currentSlide: number;
+    _slideIntervalId: number | undefined;
 
     /**
      * Renders the insecure room name warning.
@@ -710,7 +781,7 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
 
         const { _calendarEnabled, _recentListEnabled, t } = this.props;
 
-        const tabs = [];
+        const tabs: Array<{ id: string; label: string; content: React.ReactNode }> = [];
 
         if (_calendarEnabled) {
             tabs.push({

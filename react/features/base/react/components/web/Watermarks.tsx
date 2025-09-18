@@ -162,8 +162,8 @@ class Watermarks extends Component<IProps, State> {
                     <a
                         aria-label={t("jitsiHome", { logo: "Duy Tân University" })}
                         className={className}
-                        href={_logoLink}
-                        target="_new"
+                        href="/"
+                        target="_self"
                     >
                         {reactElement}
                     </a>
