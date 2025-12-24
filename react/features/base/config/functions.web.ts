@@ -58,7 +58,7 @@ export function _setDeeplinkingDefaults(deeplinking: IDeeplinkingConfig) {
 
     const { android, desktop, ios } = deeplinking;
 
-    desktop.appName = desktop.appName || "Duy Tan University";
+    desktop.appName = desktop.appName || "hoclientuc";
     desktop.appScheme = desktop.appScheme || "jitsi-meet";
     desktop.download = desktop.download || {};
     desktop.download.windows =
@@ -71,11 +71,11 @@ export function _setDeeplinkingDefaults(deeplinking: IDeeplinkingConfig) {
         desktop.download.linux ||
         "https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet-x86_64.AppImage";
 
-    ios.appName = ios.appName || "Duy Tan University";
+    ios.appName = ios.appName || "hoclientuc";
     ios.appScheme = ios.appScheme || "org.jitsi.meet";
     ios.downloadLink = ios.downloadLink || "https://itunes.apple.com/us/app/jitsi-meet/id1165103905";
 
-    android.appName = android.appName || "Duy Tan University";
+    android.appName = android.appName || "hoclientuc";
     android.appScheme = android.appScheme || "org.jitsi.meet";
     android.downloadLink = android.downloadLink || "https://play.google.com/store/apps/details?id=org.jitsi.meet";
     android.appPackage = android.appPackage || "org.jitsi.meet";

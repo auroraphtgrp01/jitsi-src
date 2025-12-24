@@ -1,4 +1,4 @@
-# <p align="center">Duy Tan University React Native SDK</p>
+# <p align="center">hoclientuc React Native SDK</p>
 
 ## Installation
 

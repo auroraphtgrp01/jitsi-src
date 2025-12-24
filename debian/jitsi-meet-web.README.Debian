@@ -1,7 +1,7 @@
-Duy Tan University for Debian
+hoclientuc for Debian
 ----------------------------
 
-This is a WebRTC frontend of the video conferencing tool Duy Tan University. It depends on the
+This is a WebRTC frontend of the video conferencing tool hoclientuc. It depends on the
 jitsi-videobridge package, which is a SFU (Selective Forwarding Unit) and both packages
 are designed to work together.
 

@@ -254,13 +254,13 @@ export function isDisplayNameVisible(state: IReduxState): boolean {
 }
 
 /**
- * Restores a Duy Tan University config.js from {@code localStorage} if it was
+ * Restores a hoclientuc config.js from {@code localStorage} if it was
  * previously downloaded from a specific {@code baseURL} and stored with
  * {@link storeConfig}.
  *
  * @param {string} baseURL - The base URL from which the config.js was
  * previously downloaded and stored with {@code storeConfig}.
- * @returns {?Object} The Duy Tan University config.js which was previously downloaded
+ * @returns {?Object} The hoclientuc config.js which was previously downloaded
  * from {@code baseURL} and stored with {@code storeConfig} if it was restored;
  * otherwise, {@code undefined}.
  */
@@ -303,7 +303,7 @@ export function setConfigFromURLParams(config: IConfig, interfaceConfig: any, lo
     // params = {
     //     "config.disableAudioLevels": false,
     //     "config.channelLastN": -1,
-    //     "interfaceConfig.APP_NAME": "Duy Tan University"
+    //     "interfaceConfig.APP_NAME": "hoclientuc"
     // }
     // We want to have:
     // json = {
@@ -312,7 +312,7 @@ export function setConfigFromURLParams(config: IConfig, interfaceConfig: any, lo
     //         "channelLastN": -1
     //     },
     //     interfaceConfig: {
-    //         "APP_NAME": "Duy Tan University"
+    //         "APP_NAME": "hoclientuc"
     //     }
     // }
     config && (json.config = {});

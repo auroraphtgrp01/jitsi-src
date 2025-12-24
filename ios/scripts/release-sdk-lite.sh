@@ -8,7 +8,7 @@ RELEASE_REPO=$(realpath ${THIS_DIR}/../../../jitsi-meet-ios-sdk-releases)
 DEFAULT_SDK_VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" ${THIS_DIR}/../sdk/src/Lite-Info.plist)
 SDK_VERSION=${OVERRIDE_SDK_VERSION:-${DEFAULT_SDK_VERSION}}
 
-echo "Releasing Duy Tan University SDK Lite ${SDK_VERSION}"
+echo "Releasing hoclientuc SDK Lite ${SDK_VERSION}"
 
 pushd ${RELEASE_REPO}
 

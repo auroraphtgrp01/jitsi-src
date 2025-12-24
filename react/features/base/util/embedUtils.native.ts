@@ -1,7 +1,7 @@
 import { getBundleId } from "react-native-device-info";
 
 /**
- * BUndle ids for the Duy Tan University apps.
+ * BUndle ids for the hoclientuc apps.
  */
 const JITSI_MEET_APPS = [
     // iOS app.
@@ -18,7 +18,7 @@ const JITSI_MEET_APPS = [
  * Checks whether we are loaded in iframe. In the mobile case we treat SDK
  * consumers as the web treats iframes.
  *
- * @returns {boolean} Whether the current app is a Duy Tan University app.
+ * @returns {boolean} Whether the current app is a hoclientuc app.
  */
 export function isEmbedded(): boolean {
     return !JITSI_MEET_APPS.includes(getBundleId());

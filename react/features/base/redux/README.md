@@ -1,6 +1,6 @@
-# Duy Tan University - redux state persistence
+# hoclientuc - redux state persistence
 
-Duy Tan University has a persistence layer that persists specific subtrees of the redux
+hoclientuc has a persistence layer that persists specific subtrees of the redux
 store/state into window.localStorage (on Web) or AsyncStorage (on mobile).
 
 # Usage
@@ -22,7 +22,7 @@ in the `reducer.js` of the `base/settings` feature.
 
 If the second parameter is omitted, the entire feature state is persisted.
 
-When it's done, Duy Tan University will automatically persist these subtrees and
+When it's done, hoclientuc will automatically persist these subtrees and
 rehydrate them on startup.
 
 # Throttling

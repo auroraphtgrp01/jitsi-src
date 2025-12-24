@@ -651,7 +651,7 @@ var config = {
     // Disables or enables RTX (RFC 4588) (defaults to false).
     // disableRtx: false,
 
-    // Moves all Duy Tan University 'beforeunload' logic (cleanup, leaving, disconnecting, etc) to the 'unload' event.
+    // Moves all hoclientuc 'beforeunload' logic (cleanup, leaving, disconnecting, etc) to the 'unload' event.
     // disableBeforeUnloadHandlers: true,
 
     // Disables or enables TCC support in this client (default: enabled).
@@ -1277,7 +1277,7 @@ var config = {
     //
     //     // The desktop deeplinking config, disabled by default.
     //     desktop: {
-    //         appName: 'Duy Tan University',
+    //         appName: 'hoclientuc',
     //         appScheme: 'jitsi-meet,
     //         download: {
     //             linux:
@@ -1296,7 +1296,7 @@ var config = {
 
     //     // The ios deeplinking config.
     //     ios: {
-    //         appName: 'Duy Tan University',
+    //         appName: 'hoclientuc',
     //         // Specify mobile app scheme for opening the app from the mobile browser.
     //         appScheme: 'org.jitsi.meet',
     //         // Custom URL for downloading ios mobile app.
@@ -1305,7 +1305,7 @@ var config = {
 
     //     // The android deeplinking config.
     //     android: {
-    //         appName: 'Duy Tan University',
+    //         appName: 'hoclientuc',
     //         // Specify mobile app scheme for opening the app from the mobile browser.
     //         appScheme: 'org.jitsi.meet',
     //         // Custom URL for downloading android mobile app.
@@ -1642,7 +1642,7 @@ var config = {
 
     /**
      * This property can be used to alter the generated meeting invite links (in combination with a branding domain
-     * which is retrieved internally by Duy Tan University) (e.g. https://meet.jit.si/someMeeting
+     * which is retrieved internally by hoclientuc) (e.g. https://meet.jit.si/someMeeting
      * can become https://brandedDomain/roomAlias)
      */
     // brandingRoomAlias: null,

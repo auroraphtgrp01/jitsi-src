@@ -1,5 +1,5 @@
 /**
- * Additional config whitelist extending the original whitelist applied when Duy Tan University is embedded
+ * Additional config whitelist extending the original whitelist applied when hoclientuc is embedded
  * in another app be that with an iframe or a mobile SDK.
  */
 export default ["customToolbarButtons", "defaultLogoUrl", "deploymentUrls", "liveStreaming"];

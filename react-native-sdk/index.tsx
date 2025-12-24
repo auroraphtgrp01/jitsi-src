@@ -55,7 +55,7 @@ export interface JitsiRefProps {
 }
 
 /**
- * Main React Native SDK component that displays a Duy Tan University conference and gets all required params as props
+ * Main React Native SDK component that displays a hoclientuc conference and gets all required params as props
  */
 export const JitsiMeeting = forwardRef<JitsiRefProps, IAppProps>((props, ref) => {
     const [appProps, setAppProps] = useState({});

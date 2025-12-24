@@ -674,7 +674,7 @@ function initCommands() {
          * @param { string } arg.rtmpStreamKey - The RTMP stream key.
          * @param { string } arg.rtmpBroadcastID - The RTMP broadcast ID.
          * @param { boolean } arg.shouldShare - Whether the recording should be shared with the participants or not.
-         * Only applies to certain Duy Tan University deploys.
+         * Only applies to certain hoclientuc deploys.
          * @param { string } arg.youtubeStreamKey - The youtube stream key.
          * @param { string } arg.youtubeBroadcastID - The youtube broadcast ID.
          * @param { Object } arg.extraMetadata - Any extra metadata params for file recording.
@@ -1195,15 +1195,15 @@ function sanitizeMouseEvent(event) {
 
 /**
  * Implements API class that communicates with external API class and provides
- * interface to access Duy Tan University features by external applications that embed
- * Duy Tan University.
+ * interface to access hoclientuc features by external applications that embed
+ * hoclientuc.
  */
 class API {
     _enabled;
 
     /**
      * Initializes the API. Setups message event listeners that will receive
-     * information from external applications that embed Duy Tan University. It also
+     * information from external applications that embed hoclientuc. It also
      * sends a message to the external application that API is initialized.
      *
      * @param {Object} options - Optional parameters.

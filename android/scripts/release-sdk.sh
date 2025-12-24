@@ -19,7 +19,7 @@ fi
 
 export MVN_REPO=$THE_MVN_REPO
 
-echo "Releasing Duy Tan University SDK ${SDK_VERSION}"
+echo "Releasing hoclientuc SDK ${SDK_VERSION}"
 echo "Using ${MVN_REPO} as the Maven repo"
 
  if [[ $MVN_HTTP == 0 ]]; then
@@ -30,8 +30,8 @@ echo "Using ${MVN_REPO} as the Maven repo"
     fi
 fi
 
-# Now build and publish the Duy Tan University SDK and its dependencies
-echo "Building and publishing the Duy Tan University SDK"
+# Now build and publish the hoclientuc SDK and its dependencies
+echo "Building and publishing the hoclientuc SDK"
 pushd ${THIS_DIR}/../
 ./gradlew clean
 ./gradlew assembleRelease
@@ -42,7 +42,7 @@ popd
 if [[ $MVN_HTTP == 0 ]]; then
     pushd ${MVN_REPO_PATH}
     git add -A .
-    git commit -m "Duy Tan University SDK + dependencies: ${SDK_VERSION}"
+    git commit -m "hoclientuc SDK + dependencies: ${SDK_VERSION}"
     popd
 fi
 

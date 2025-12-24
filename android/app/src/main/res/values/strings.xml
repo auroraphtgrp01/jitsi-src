@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Duy Tan University</string>
-    <string name="restriction_server_url_description">URL of Duy Tan University server instance to connect to</string>
+    <string name="app_name">hoclientuc</string>
+    <string name="restriction_server_url_description">URL of hoclientuc server instance to connect to</string>
     <string name="restriction_server_url_title">Server URL</string>
 </resources>

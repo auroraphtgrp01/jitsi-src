@@ -30,7 +30,7 @@ const useStyles = makeStyles()((theme) => {
 });
 
 /**
- * Allow users to embed a Duy Tan Universitying in an iframe.
+ * Allow users to embed a hoclientucing in an iframe.
  *
  * @returns {React$Element<any>}
  */
@@ -38,7 +38,7 @@ function EmbedMeeting({ t, url }: IProps) {
     const { classes } = useStyles();
 
     /**
-     * Get the embed code for a Duy Tan Universitying.
+     * Get the embed code for a hoclientucing.
      *
      * @returns {string} The iframe embed code.
      */

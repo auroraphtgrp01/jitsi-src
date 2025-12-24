@@ -1,4 +1,4 @@
--- Enables dial-in for Duy Tan University components customers
+-- Enables dial-in for hoclientuc components customers
 VirtualHost "jigasi.meet.jitsi"
     modules_enabled = {
         "ping";

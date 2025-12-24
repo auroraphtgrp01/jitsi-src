@@ -446,7 +446,7 @@
         "answer": "wótegroniś",
         "audioCallTitle": "pśiźecy telefonat",
         "decline": "OK",
-        "productLabel": "wót Duy Tan University",
+        "productLabel": "wót hoclientuc",
         "videoCallTitle": "pśiźecy wideo-tefonat"
     },
     "info": {
@@ -1337,7 +1337,7 @@
         "go": "dalej",
         "goSmall": "dalej",
         "headerSubtitle": "Wěste a wusokokwalitatiwne konference",
-        "headerTitle": "Duy Tan University",
+        "headerTitle": "hoclientuc",
         "info": "informacije",
         "jitsiOnMobile": "Jitsi pśecej pódla – ześěńśo sebje našu aplikaciju a startujśo konference wšuźi, źož rowno sćo",
         "join": "ŽAŁOŽYŚ / PŚISTUPIŚ",
@@ -1345,7 +1345,7 @@
             "calendar": "logo kalendarja",
             "desktopPreviewThumbnail": "naglěd desktopa ako miniatura",
             "googleLogo": "logo Google",
-            "logoDeepLinking": "logo Duy Tan University",
+            "logoDeepLinking": "logo hoclientuc",
             "microsoftLogo": "logo Microsoft",
             "policyLogo": "logo za směrnice"
         },

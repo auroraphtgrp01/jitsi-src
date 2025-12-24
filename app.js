@@ -1,4 +1,4 @@
-/* Duy Tan University app main entrypoint. */
+/* hoclientuc app main entrypoint. */
 
 // Re-export jQuery
 // FIXME: Remove this requirement from torture tests.

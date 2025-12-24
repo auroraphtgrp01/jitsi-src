@@ -61,7 +61,7 @@ export const URI_PROTOCOL_PATTERN = "^([a-z][a-z0-9\\.\\+-]*:)";
 
 /**
  * Excludes/removes certain characters from a specific path part which are
- * incompatible with Duy Tan University on the client and/or server sides. The main
+ * incompatible with hoclientuc on the client and/or server sides. The main
  * use case for this method is to clean up the room name and the tenant.
  *
  * @param {?string} pathPart - The path part to fix.
@@ -238,7 +238,7 @@ export function parseStandardURIString(str: string) {
     // XXX A URI string as defined by RFC 3986 does not contain any whitespace.
     // Usually, a browser will have already encoded any whitespace. In order to
     // avoid potential later problems related to whitespace in URI, strip any
-    // whitespace. Anyway, the Duy Tan University app is not known to utilize unencoded
+    // whitespace. Anyway, the hoclientuc app is not known to utilize unencoded
     // whitespace so the stripping is deemed safe.
     str = str.replace(/\s/g, "");
 
@@ -318,11 +318,11 @@ export function parseStandardURIString(str: string) {
 }
 
 /**
- * Parses a specific URI which (supposedly) references a Duy Tan University resource
+ * Parses a specific URI which (supposedly) references a hoclientuc resource
  * (location).
  *
  * @param {(string|undefined)} uri - The URI to parse which (supposedly)
- * references a Duy Tan University resource (location).
+ * references a hoclientuc resource (location).
  * @public
  * @returns {{
  *     contextRoot: string,
@@ -343,14 +343,14 @@ export function parseURIString(uri?: string): any {
 
     const obj = parseStandardURIString(_fixURIStringScheme(uri));
 
-    // XXX While the components/segments of pathname are URI encoded, Duy Tan University
+    // XXX While the components/segments of pathname are URI encoded, hoclientuc
     // on the client and/or server sides still don't support certain characters.
     obj.pathname = obj.pathname
         .split("/")
         .map((pathPart: any) => _fixPathPart(pathPart))
         .join("/");
 
-    // Add the properties that are specific to a Duy Tan University resource (location)
+    // Add the properties that are specific to a hoclientuc resource (location)
     // such as contextRoot, room:
 
     // contextRoot

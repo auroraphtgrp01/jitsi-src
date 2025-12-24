@@ -1,11 +1,11 @@
 name: Feature request
-description: Suggest an idea for Duy Tan University
+description: Suggest an idea for hoclientuc
 labels: ["feature-request"]
 body:
     - type: markdown
       attributes:
           value: |
-              Thank you for suggesting an idea to make Duy Tan University better.
+              Thank you for suggesting an idea to make hoclientuc better.
 
               **Note**: the ultimate decision for implementing features lies on the Jitsi team, not all feature requests shall be accepted.
     - type: textarea

@@ -1,9 +1,9 @@
 import { browser } from "../base/lib-jitsi-meet";
 
 /**
- * Returns true if Duy Tan University is running in too old jitsi-meet-electron app and false otherwise.
+ * Returns true if hoclientuc is running in too old jitsi-meet-electron app and false otherwise.
  *
- * @returns {boolean} - True if Duy Tan University is running in too old jitsi-meet-electron app and false otherwise.
+ * @returns {boolean} - True if hoclientuc is running in too old jitsi-meet-electron app and false otherwise.
  */
 export function isOldJitsiMeetElectronApp() {
     if (!browser.isElectron()) {

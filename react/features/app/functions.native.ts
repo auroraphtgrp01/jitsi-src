@@ -30,7 +30,7 @@ export function getName() {
 }
 
 /**
- * Returns the path to the Duy Tan University SDK bundle on iOS. On Android it will be
+ * Returns the path to the hoclientuc SDK bundle on iOS. On Android it will be
  * undefined.
  *
  * @returns {string|undefined}

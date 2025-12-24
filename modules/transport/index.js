@@ -23,14 +23,14 @@ if (typeof API_ID === 'number') {
 }
 
 /**
- * The instance of Transport class that will be used by Duy Tan University.
+ * The instance of Transport class that will be used by hoclientuc.
  *
  * @type {Transport}
  */
 let transport;
 
 /**
- * Returns the instance of Transport class that will be used by Duy Tan University.
+ * Returns the instance of Transport class that will be used by hoclientuc.
  *
  * @returns {Transport}
  */

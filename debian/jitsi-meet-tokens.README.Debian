@@ -1,7 +1,7 @@
-Token authentication plugin for Duy Tan University
+Token authentication plugin for hoclientuc
 ----------------------------
 
-Duy Tan University is a WebRTC video conferencing application. This package contains
-Prosody plugin which enables token authentication in Duy Tan University installation.
+hoclientuc is a WebRTC video conferencing application. This package contains
+Prosody plugin which enables token authentication in hoclientuc installation.
 
  -- Pawel Domas <pawel.domas@jitsi.org>  Mon, 2 Nov 2015 14:45:00 -0600

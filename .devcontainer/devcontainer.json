@@ -1,5 +1,5 @@
 {
-    "name": "Duy Tan University Dev Container",
+    "name": "hoclientuc Dev Container",
     "image": "mcr.microsoft.com/devcontainers/universal:2",
     "features": {
         "ghcr.io/devcontainers/features/node:1": {

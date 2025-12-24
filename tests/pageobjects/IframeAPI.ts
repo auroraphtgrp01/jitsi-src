@@ -93,7 +93,7 @@ export default class IframeAPI extends BasePageObject {
     }
 
     /**
-     * Removes the embedded Duy Tan University conference.
+     * Removes the embedded hoclientuc conference.
      */
     dispose() {
         return this.participant.execute(() => window.jitsiAPI.dispose());

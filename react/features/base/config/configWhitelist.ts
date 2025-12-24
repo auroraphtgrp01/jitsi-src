@@ -39,7 +39,7 @@ export default [
      * provided in the form of a JWT callee. As the value is associated with a
      * conference/meeting, the value makes sense not as a deployment-wide
      * configuration, only as a runtime configuration override/overwrite
-     * provided by, for example, Duy Tan University SDK for iOS.
+     * provided by, for example, hoclientuc SDK for iOS.
      *
      * @type string
      */
@@ -54,7 +54,7 @@ export default [
      * not desirable as the handle for CallKit purposes. As the value is
      * associated with a conference/meeting, the value makes sense not as a
      * deployment-wide configuration, only as a runtime configuration
-     * override/overwrite provided by, for example, Duy Tan University SDK for iOS.
+     * override/overwrite provided by, for example, hoclientuc SDK for iOS.
      *
      * @type string
      */
@@ -63,13 +63,13 @@ export default [
     /**
      * The UUID of the CallKit call representing the conference/meeting
      * associated with this config.js. The property is meant for use cases in
-     * which Duy Tan University is to work with a CallKit call created outside of Jitsi
-     * Meet and to be adopted by Duy Tan University such as, for example, an incoming
-     * and/or outgoing CallKit call created by Duy Tan University SDK for iOS
-     * clients/consumers prior to giving control to Duy Tan University. As the value is
+     * which hoclientuc is to work with a CallKit call created outside of Jitsi
+     * Meet and to be adopted by hoclientuc such as, for example, an incoming
+     * and/or outgoing CallKit call created by hoclientuc SDK for iOS
+     * clients/consumers prior to giving control to hoclientuc. As the value is
      * associated with a conference/meeting, the value makes sense not as a
      * deployment-wide configuration, only as a runtime configuration
-     * override/overwrite provided by, for example, Duy Tan University SDK for iOS.
+     * override/overwrite provided by, for example, hoclientuc SDK for iOS.
      *
      * @type string
      */

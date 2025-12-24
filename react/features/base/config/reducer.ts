@@ -14,7 +14,7 @@ import { _cleanupConfig, _setDeeplinkingDefaults } from "./functions";
 /**
  * The initial state of the feature base/config when executing in a
  * non-React Native environment. The mandatory configuration to be passed to
- * JitsiMeetJS#init(). The app will download config.js from the Duy Tan University
+ * JitsiMeetJS#init(). The app will download config.js from the hoclientuc
  * deployment and take its values into account but the values below will be
  * enforced (because they are essential to the correct execution of the
  * application).
@@ -26,7 +26,7 @@ const INITIAL_NON_RN_STATE: IConfig = {};
 /**
  * The initial state of the feature base/config when executing in a React Native
  * environment. The mandatory configuration to be passed to JitsiMeetJS#init().
- * The app will download config.js from the Duy Tan University deployment and take its
+ * The app will download config.js from the hoclientuc deployment and take its
  * values into account but the values below will be enforced (because they are
  * essential to the correct execution of the application).
  *
@@ -136,7 +136,7 @@ ReducerRegistry.register<IConfigState>("features/base/config", (state = _getInit
 /**
  * Gets the initial state of the feature base/config. The mandatory
  * configuration to be passed to JitsiMeetJS#init(). The app will download
- * config.js from the Duy Tan University deployment and take its values into account but
+ * config.js from the hoclientuc deployment and take its values into account but
  * the values below will be enforced (because they are essential to the correct
  * execution of the application).
  *
@@ -187,7 +187,7 @@ function _setConfig(state: IConfig, { config }: { config: IConfig }) {
         { error: undefined },
 
         // The config of _getInitialState() is meant to override the config
-        // downloaded from the Duy Tan University deployment because the former contains
+        // downloaded from the hoclientuc deployment because the former contains
         // values that are mandatory.
         _getInitialState()
     );

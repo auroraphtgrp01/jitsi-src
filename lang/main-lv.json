@@ -593,7 +593,7 @@
         "answer": "Atbildēt",
         "audioCallTitle": "Ienākošs audio zvans",
         "decline": "Noraidīt",
-        "productLabel": "no Duy Tan University",
+        "productLabel": "no hoclientuc",
         "videoCallTitle": "Ienākošs video zvans"
     },
     "info": {
@@ -862,7 +862,7 @@
         "noiseSuppressionDesktopAudioDescription": "Darbvirsmas audio koplietošanas laikā nevar iespējot trokšņu slāpēšanu. Lūdzu, atspējojiet to un mēģiniet vēlreiz.",
         "noiseSuppressionFailedTitle": "Neizdevās sākt trokšņu slāpēšanu",
         "noiseSuppressionStereoDescription": "Stereo audio trokšņu slāpēšana pašlaik netiek atbalstīta.",
-        "oldElectronClientDescription1": "Izskatās, ka jūs izmantojat vecu Duy Tan University klienta versiju, kurai ir zināmas drošības ievainojamības. Lūdzu, atjauniniet uz ",
+        "oldElectronClientDescription1": "Izskatās, ka jūs izmantojat vecu hoclientuc klienta versiju, kurai ir zināmas drošības ievainojamības. Lūdzu, atjauniniet uz ",
         "oldElectronClientDescription2": "jaunākā versija",
         "oldElectronClientDescription3": "tagad!",
         "participantWantsToJoin": "Vēlas pievienoties sapulcei",
@@ -1625,7 +1625,7 @@
         "go": "Aiziet",
         "goSmall": "Aiziet",
         "headerSubtitle": "Drošas un kvalitatīvas sapulces",
-        "headerTitle": "Duy Tan University",
+        "headerTitle": "hoclientuc",
         "info": "Iezvanes informācija",
         "jitsiOnMobile": "Jitsi mobilajā ierīcē — lejupielādējiet mūsu lietotnes un sāciet sapulci no jebkuras vietas",
         "join": "IZVEIDOT / PIEVIENOTIES",
@@ -1633,7 +1633,7 @@
             "calendar": "Kalendāra logotips",
             "desktopPreviewThumbnail": "Darbvirsmas priekšskatījuma sīktēls",
             "googleLogo": "Google logotips",
-            "logoDeepLinking": "Duy Tan University logotips",
+            "logoDeepLinking": "hoclientuc logotips",
             "microsoftLogo": "Microsoft logotips",
             "policyLogo": "Politikas logotips"
         },

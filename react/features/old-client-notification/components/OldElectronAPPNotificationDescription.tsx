@@ -4,7 +4,7 @@ import { WithTranslation } from "react-i18next";
 import { translate } from "../../base/i18n/functions";
 
 /**
- * A component that renders the description of the notification for old Duy Tan University Electron clients.
+ * A component that renders the description of the notification for old hoclientuc Electron clients.
  *
  * @augments AbstractApp
  */

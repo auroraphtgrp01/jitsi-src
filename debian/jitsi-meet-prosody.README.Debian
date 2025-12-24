@@ -1,7 +1,7 @@
-Prosody configuration for Duy Tan University for Debian
+Prosody configuration for hoclientuc for Debian
 ----------------------------
 
-Duy Tan University is a WebRTC video conferencing application. This package contains 
-configuration of prosody which are needed for Duy Tan University to work.
+hoclientuc is a WebRTC video conferencing application. This package contains 
+configuration of prosody which are needed for hoclientuc to work.
 
  -- Yasen Pramatarov <yasen@bluejimp.com>  Mon, 30 Jun 2014 23:05:18 +0100
