@@ -1,0 +1,13 @@
+FROM jitsi/web:stable
+
+COPY libs/ /usr/share/jitsi-meet/libs/
+COPY css/ /usr/share/jitsi-meet/css/
+COPY *.html /usr/share/jitsi-meet/
+COPY *.js /usr/share/jitsi-meet/
+COPY images/ /usr/share/jitsi-meet/images/
+COPY sounds/ /usr/share/jitsi-meet/sounds/
+COPY lang/ /usr/share/jitsi-meet/lang/
+COPY static/ /usr/share/jitsi-meet/static/
+COPY fonts/ /usr/share/jitsi-meet/fonts/
+
+RUN chown -R www-data:www-data /usr/share/jitsi-meet/
