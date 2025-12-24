@@ -66,15 +66,6 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
             generateRoomNames: interfaceConfig.GENERATE_ROOMNAMES_ON_WELCOME_PAGE,
         };
 
-        this._currentSlide = 0;
-        this._slides = [
-            { src: "./images/detailed-video-interface.png", alt: "Video call interface" },
-            { src: "./images/Online-Meeting-All-User.webp", alt: "DuyTan University Logo" },
-            { src: "./images/Online-Meeting&Join.webp", alt: "DuyTan University Logo" },
-            { src: "./images/Home-Setting-Meeting.webp", alt: "DuyTan University Logo" },
-            { src: "./images/Home-Create-Meeting.webp", alt: "DuyTan University Logo" },
-        ];
-
         /**
          * Used To display a warning massage if the title input has no allow character.
          *
@@ -145,8 +136,7 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
         this._setRoomInputRef = this._setRoomInputRef.bind(this);
         this._setAdditionalToolbarContentRef = this._setAdditionalToolbarContentRef.bind(this);
         this._renderFooter = this._renderFooter.bind(this);
-        this._onPrevClick = this._onPrevClick.bind(this);
-        this._onNextClick = this._onNextClick.bind(this);
+        this._onCreateMeetingClick = this._onCreateMeetingClick.bind(this);
     }
 
     /**
@@ -179,11 +169,6 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
         if (this._shouldShowAdditionalCard()) {
             this._additionalCardRef?.appendChild(this._additionalCardTemplate?.content.cloneNode(true) as Node);
         }
-
-        // Auto-advance slides every 5 seconds
-        this._slideIntervalId = window.setInterval(() => {
-            this._onNextClick();
-        }, 5000);
     }
 
     /**
@@ -196,11 +181,18 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
         super.componentWillUnmount();
 
         document.body.classList.remove("welcome-page");
+    }
 
-        if (this._slideIntervalId) {
-            clearInterval(this._slideIntervalId);
-            this._slideIntervalId = undefined;
-        }
+    /**
+     * Warns users that only admin can create new meetings.
+     *
+     * @param {React.MouseEvent} event - The click event.
+     * @private
+     * @returns {void}
+     */
+    _onCreateMeetingClick(event: React.MouseEvent<HTMLButtonElement>) {
+        event.preventDefault();
+        window.alert("Chỉ admin mới có quyền tạo cuộc họp.");
     }
 
     /**
@@ -212,13 +204,12 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
     override render() {
         const { _moderatedRoomServiceUrl, t } = this.props;
         const { DEFAULT_WELCOME_PAGE_LOGO_URL, DISPLAY_WELCOME_FOOTER } = interfaceConfig;
-        const slides = this._slides;
-        const currentSlide = this._currentSlide;
         const showAdditionalCard = this._shouldShowAdditionalCard();
         const showAdditionalContent = this._shouldShowAdditionalContent();
         const showAdditionalToolbarContent = this._shouldShowAdditionalToolbarContent();
         const contentClassName = showAdditionalContent ? "with-content" : "without-content";
         const footerClassName = DISPLAY_WELCOME_FOOTER ? "with-footer" : "without-footer";
+        const placeholderText = "Nhập một mã hoặc liên kết cuộc họp";
 
         return (
             <>
@@ -238,13 +229,14 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
 
         body {
             font-family: Arial, sans-serif;
-            background-color: #f7fafc; /* bg-gray-50 */
+            background: #ffffff;
+            color: #202124;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 960px;
             margin: 0 auto;
-            padding: 2rem 1rem;
+            padding: 3rem 1.5rem 4rem;
         }
 
         /* Grid layout */
@@ -252,370 +244,253 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
             display: grid;
             gap: 3rem;
             align-items: center;
-        }
-
-        @media (min-width: 1024px) {
-            .grid {
-                grid-template-columns: 1fr 1fr;
-            }
+            grid-template-columns: 1fr;
         }
 
         /* Left content */
         .left-content {
             display: flex;
             flex-direction: column;
-            gap: 2rem;
+            gap: 1.75rem;
+            align-items: center;
+            text-align: center;
         }
 
         .logo-container {
+            display: none;
+        }
+
+        .heading {
+            color: #202124;
+            font-size: 44px;
+            font-weight: 600;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .subheading {
+            font-size: 18px;
+            color: #5f6368;
+        }
+
+        .hero-content h2 {
+            display: none;
+        }
+
+        .hero-content p {
+            display: none;
+        }
+
+        /* Buttons */
+        .actions-row {
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
+            justify-content: center;
             gap: 0.75rem;
         }
 
-        .logo {
-            height: 4rem;
-            width: auto;
-        }
-
-
-        .heading {
-            color: #dc2626; /* text-red-600 */
-            font-size: 36px;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .heading span {
-            color: #2563eb; /* text-blue-600 */
-        }
-
-        .hero-content h2,
-        .hero-content p {
-            font-size: 56px;
-            font-weight: 500;
-            color: #111827; /* text-gray-900 */
-            line-height: 1.2;
-        }
-
-        /* Optional: If you want <p> to be lighter color, uncomment below */
-        /*
-        .hero-content p {
-            color: #4b5563; 
-        }
-        */
-
-        /* Buttons */
-        .action-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .button-container {
-            position: relative;
-        }
-
         .button {
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            padding: 1.5rem 2rem;
-            font-size: 1.125rem;
-            border-radius: 9999px;
+            justify-content: center;
+            padding: 0 24px;
+            height: 48px;
+            font-size: 15px;
+            border-radius: 24px;
             cursor: pointer;
-            width: 100%;
-            text-align: left;
             border: none;
+            transition: box-shadow 150ms ease, transform 150ms ease;
+            gap: 10px;
         }
 
         .button-primary {
-            background-color: #dc2626; /* bg-red-600 */
-            color: white;
+            background: #1a73e8;
+            color: #ffffff;
+            box-shadow: 0 1px 3px rgba(26, 115, 232, 0.35);
         }
 
         .button-primary:hover {
-            background-color: #b91c1c; /* hover:bg-red-700 */
+            box-shadow: 0 2px 6px rgba(26, 115, 232, 0.4);
+            transform: translateY(-1px);
         }
 
-        .button-outline {
-            border: 1px solid #d1d5db; /* border-gray-300 */
-            background-color: transparent;
-            color: #4b5563; /* text-gray-600 */
-        }
-
-        .button-ghost {
-            background-color: transparent;
-            color: #4b5563; /* text-gray-600 */
-        }
-
-        .button-ghost:hover {
-            background-color: #f3f4f6; /* hover:bg-gray-100 */
-        }
-
-        .button-icon {
-            margin-right: 0.75rem;
-            font-size: 1.25rem;
-            padding: 4px;
-        }
-
-        .sign-in-text {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #fecaca; /* text-red-200 */
-            font-size: 0.875rem;
-        }
-
-        /* Right content */
-        .right-content {
-            text-align: right;
-        }
-
-        .right-content h3 {
-            font-size: 36px;
-            font-weight: 600;
-            text-align: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .right-content h3 span.red {
-            color: #dc2626; /* text-red-600 */
-        }
-
-        .right-content h3 span.blue {
-            color: #2563eb; /* text-blue-600 */
-        }
-
-        /* Card */
-        .card {
-            background-color: white;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            overflow: hidden;
-        }
-
-        .card img {
-            width: 100%;
-            height: auto;
-        }
-
-        .features-text {
-            text-align: center;
-            color: rgba(185, 185, 185, 1);
-            margin-top: 1rem;
-            font-size: 18px;
-        }
-
-        /* Navigation */
-        .navigation {
-            display: flex;
+        .input-shell {
+            display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 1rem;
-            
+            height: 48px;
+            padding: 0 14px;
+            border: 1px solid #dadce0;
+            border-radius: 24px;
+            background: #ffffff;
+            gap: 10px;
+            min-width: 280px;
         }
 
-        .nav-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 2rem;
-            height: 2rem;
-            background-color: #dc2626;
+        .input-shell input {
             border: none;
+            outline: none;
+            font-size: 15px;
+            width: 100%;
+            color: #202124;
+        }
+
+        .input-shell input::placeholder {
+            color: #5f6368;
+        }
+
+        .link-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: #1a73e8;
+            font-weight: 600;
+            border: none;
+            font-size: 15px;
             cursor: pointer;
+            padding: 0 10px;
+            height: 48px;
         }
 
-        .dots {
-            display: flex;
-            gap: 0.5rem;
+        .inline-text {
+            color: #5f6368;
+            font-size: 14px;
+            margin-top: 8px;
         }
 
-        .dot {
-            width: 0.5rem;
-            height: 0.5rem;
-            border-radius: 9999px;
+        /* Right content removed */
+
+        .divider {
+            margin: 2rem 0;
+            border: 0;
+            border-top: 1px solid #dadce0;
         }
 
-        .dot-active {
-            background-color: #dc2626; /* bg-red-600 */
+        .promo-card {
+            max-width: 520px;
+            margin: 0 auto;
+            text-align: center;
+            color: #202124;
         }
 
-        .dot-inactive {
-            background-color: #d1d5db; /* bg-gray-300 */
+        .promo-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 8px;
+            background-image: url("https://hoclientuc.vn/assets/svg/logo_hoclientuc_notext.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            margin: 0 auto 1rem;
+        }
+
+        .promo-title {
+            font-size: 22px;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .promo-text {
+            color: #5f6368;
+            font-size: 14px;
+            line-height: 1.6;
         }
     `}</style>
                 <div className="center-screen">
                     <div className="container">
                         <div className="grid">
                             <div className="left-content">
-                                <div className="logo-container">
-                                    <img src="./images/duytan-logo.png" alt="DuyTan University Logo" className="logo" />
-                                </div>
-                                <div>
-                                    <h1 className="heading">
-                                        Meet <span>DuyTan University</span>
-                                    </h1>
-                                </div>
-                                <div className="hero-content">
-                                    <h2>Hop on a call with everyone, anytime</h2>
-                                    <span style={{ fontSize: "24px", color: "#6b7280" }}>
-                                        Video calls and meeting for everyone
-                                    </span>
-                                </div>
-                                <div className="action-buttons">
-                                    <div className="button-container">
-                                        <button
-                                            className="welcome-page-button button button-primary"
-                                            onClick={this._onFormSubmit}
-                                            aria-disabled="false"
-                                            aria-label="Start meeting"
-                                            id="enter_room_button"
-                                            tabIndex={0}
-                                            type="button"
-                                        >
-                                            <span
-                                                className="button-icon"
-                                                style={{ borderRadius: "2px", backgroundColor: "white" }}
-                                            >
-                                                <svg
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    width="24"
-                                                    height="24"
-                                                    viewBox="0 0 24 24"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    stroke-width="2"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    className="lucide lucide-plus-icon lucide-plus"
-                                                    style={{ color: "black" }}
-                                                >
-                                                    <path d="M5 12h14" />
-                                                    <path d="M12 5v14" />
-                                                </svg>
-                                            </span>
-                                            {t("welcomepage.startMeeting")}
-                                        </button>
-                                        <span className="sign-in-text">Sign In Required</span>
-                                    </div>
-                                    <button className="button button-outline" style={{cursor: "not-allowed"}}>
-                                        <span
-                                            className="button-icon"
-                                            style={{ borderRadius: "2px", backgroundColor: "rgba(243, 244, 246, 1)" }}
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="24"
-                                                height="24"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                className="lucide lucide-users-icon lucide-users"
-                                                style={{ color: "rgba(23, 23, 23, 1)" }}
-                                            >
-                                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                                                <path d="M16 3.128a4 4 0 0 1 0 7.744" />
-                                                <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                                                <circle cx="9" cy="7" r="4" />
-                                            </svg>
-                                        </span>
-                                        Join Meeting
-                                    </button>
-                                    <button className="button button-outline" style={{cursor: "not-allowed"}}>
-                                        <span
-                                            className="button-icon"
-                                            style={{ borderRadius: "2px", backgroundColor: "rgba(243, 244, 246, 1)" }}
-                                        >
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="24"
-                                                height="24"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                className="lucide lucide-log-out-icon lucide-log-out"
-                                            >
-                                                <path d="m16 17 5-5-5-5" />
-                                                <path d="M21 12H9" />
-                                                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-                                            </svg>
-                                        </span>
-                                        Sign In
-                                    </button>
-                                </div>
-                            </div>
-                            <div className="right-content">
-                                <div>
-                                    <h3>
-                                        Meet <span className="red">DuyTan</span>{" "}
-                                        <span className="blue">University</span>
-                                    </h3>
-                                </div>
-                                <div className="card">
-                                    <img src={slides[currentSlide]?.src} alt={slides[currentSlide]?.alt} />
-                                </div>
-                                <div className="features-text">Features that make it super easy to meet online!</div>
-                                <div className="navigation">
-                                    <div
-                                        style={{
-                                            display: "flex",
-                                            alignItems: "center",
-                                            gap: "4rem",
-                                            border: "1px solid rgb(229, 231, 235)",
-                                            padding: "8px 24px",
-                                            borderRadius: "18px",
-                                        }}
+                                <h1 className="heading">Tính năng họp và gọi video dành cho tất cả mọi người</h1>
+                                <div className="subheading">Kết nối, cộng tác và ăn mừng ở bất cứ đâu với CME Meet</div>
+
+                                <div className="actions-row">
+                                    <button
+                                        className="welcome-page-button button button-primary"
+                                        onClick={this._onCreateMeetingClick}
+                                        aria-disabled="false"
+                                        aria-label="Bắt đầu cuộc họp mới"
+                                        id="enter_room_button"
+                                        tabIndex={0}
+                                        type="button"
                                     >
-                                        <button className="nav-button" onClick={this._onPrevClick}>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="20"
+                                            height="20"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        >
+                                            <path d="M23 7l-7 5 7 5V7z" />
+                                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                                        </svg>
+                                        Cuộc họp mới
+                                    </button>
+
+                                    <form className="input-shell" onSubmit={this._onFormSubmit}>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="18"
+                                            height="18"
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            stroke="currentColor"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                        >
+                                            <path d="M4 5h16" />
+                                            <path d="M4 9h16" />
+                                            <path d="M4 9h16" />
+                                            <path d="M4 15h16" />
+                                            <path d="M4 19h16" />
+                                            <path d="M4 5h16" />
+                                            <path d="M6 3v4" />
+                                            <path d="M10 3v4" />
+                                            <path d="M14 3v4" />
+                                            <path d="M18 3v4" />
+                                        </svg>
+                                        <input
+                                            ref={this._setRoomInputRef}
+                                            placeholder={placeholderText}
+                                            aria-label="Nhập mã hoặc liên kết cuộc họp"
+                                            pattern={ROOM_NAME_VALIDATE_PATTERN_STR}
+                                            required={false}
+                                            onChange={this._onRoomChange}
+                                        />
+                                        <button type="submit" className="link-button" aria-label="Tham gia">
                                             <svg
                                                 xmlns="http://www.w3.org/2000/svg"
-                                                width="24"
-                                                height="24"
+                                                width="18"
+                                                height="18"
                                                 viewBox="0 0 24 24"
                                                 fill="none"
                                                 stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                className="lucide lucide-chevron-left-icon lucide-chevron-left"
+                                                strokeWidth="2"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
                                             >
-                                                <path d="m15 18-6-6 6-6" />
+                                                <path d="M5 12h14" />
+                                                <path d="M13 5l7 7-7 7" />
                                             </svg>
                                         </button>
-                                        <div className="dots">
-                                            {slides.map((_, index) => (
-                                                <div
-                                                    key={index}
-                                                    className={`dot ${
-                                                        index === currentSlide ? "dot-active" : "dot-inactive"
-                                                    }`}
-                                                ></div>
-                                            ))}
-                                        </div>
-                                        <button className="nav-button" onClick={this._onNextClick}>
-                                            <svg
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                width="24"
-                                                height="24"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                className="lucide lucide-chevron-right-icon lucide-chevron-right"
-                                            >
-                                                <path d="m9 18 6-6-6-6" />
-                                            </svg>
-                                        </button>
+                                    </form>
+                                </div>
+
+                                <div className="inline-text">Hoặc tham gia cuộc họp bằng mã</div>
+
+                                <hr className="divider" />
+
+                                <div className="promo-card">
+                                    <div className="promo-logo" aria-hidden="true"></div>
+                                    <div className="promo-title">Dùng thử các tính năng nâng cao của CME Meet</div>
+                                    <div className="promo-text">
+                                        Tận hưởng cuộc gọi dài hơn và nhiều lợi ích khác từ gói nâng cao. Bắt đầu dùng
+                                        thử ngay hôm nay.
                                     </div>
                                 </div>
                             </div>
@@ -626,43 +501,7 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
         );
     }
 
-    /**
-     * Go to previous slide in the carousel.
-     *
-     * @private
-     * @returns {void}
-     */
-    _onPrevClick() {
-        const slides = this._slides;
-        const currentSlide = this._currentSlide;
-        if (!slides.length) {
-            return;
-        }
-        const nextIndex = (currentSlide - 1 + slides.length) % slides.length;
-        this._currentSlide = nextIndex;
-        this.forceUpdate();
-    }
-
-    /**
-     * Go to next slide in the carousel.
-     *
-     * @private
-     * @returns {void}
-     */
-    _onNextClick() {
-        const slides = this._slides;
-        const currentSlide = this._currentSlide;
-        if (!slides.length) {
-            return;
-        }
-        const nextIndex = (currentSlide + 1) % slides.length;
-        this._currentSlide = nextIndex;
-        this.forceUpdate();
-    }
-
-    _slides: Array<{ src: string; alt: string }>;
-    _currentSlide: number;
-    _slideIntervalId: number | undefined;
+    // Slides removed per new design
 
     /**
      * Renders the insecure room name warning.

@@ -144,7 +144,7 @@ class Watermarks extends Component<IProps, State> {
         let reactElement = null;
 
         // Sử dụng logo Đại học Duy Tân cho watermark leftwatermark
-        const duyTanLogoUrl = "images/duytan-logo.png";
+        const duyTanLogoUrl = "images/logo_hoclientuc.png";
 
         if (_showJitsiWatermark) {
             const style = {
