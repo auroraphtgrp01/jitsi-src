@@ -1,8 +1,8 @@
 {
     "packageId": "org.jitsi.meet",
     "host": "meet.jit.si",
-    "name": "hoclientuc",
-    "launcherName": "hoclientuc",
+    "name": "Hoc Lien Tuc",
+    "launcherName": "Hoc Lien Tuc",
     "display": "standalone",
     "themeColor": "#17A0DB",
     "navigationColor": "#000000",

@@ -1,4 +1,4 @@
-# <p align="center">hoclientuc React Native SDK</p>
+# <p align="center">Hoc Lien Tuc React Native SDK</p>
 
 ## Installation
 

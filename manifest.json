@@ -7,8 +7,8 @@
             "platform": "chromeos_play"
         }
     ],
-    "short_name": "hoclientuc",
-    "name": "hoclientuc",
+    "short_name": "Hoc Lien Tuc",
+    "name": "Hoc Lien Tuc",
     "icons": [
         {
             "src": "static/pwa/icons/icon192.png",

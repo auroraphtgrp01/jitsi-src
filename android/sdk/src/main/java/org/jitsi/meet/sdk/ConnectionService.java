@@ -29,7 +29,7 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * hoclientuc implementation of {@link ConnectionService}. At the time of this
+ * Hoc Lien Tuc implementation of {@link ConnectionService}. At the time of this
  * writing it implements only the outgoing call scenario.
  *
  * NOTE the class needs to be public, but is not part of the SDK API and should
@@ -334,7 +334,7 @@ public class ConnectionService extends android.telecom.ConnectionService {
     }
 
     /**
-     * Connection implementation for hoclientuc's {@link ConnectionService}.
+     * Connection implementation for Hoc Lien Tuc's {@link ConnectionService}.
      *
      * @author Pawel Domas
      */

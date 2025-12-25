@@ -2,8 +2,8 @@
     "android_package_name": "org.jitsi.meet",
     "prefer_related_applications": true,
     "related_applications": [{ "id": "org.jitsi.meet", "platform": "chromeos_play" }],
-    "short_name": "hoclientuc",
-    "name": "hoclientuc",
+    "short_name": "Hoc Lien Tuc",
+    "name": "Hoc Lien Tuc",
     "icons": [
         { "src": "static/pwa/icons/icon192.png", "type": "image/png", "sizes": "192x192" },
         { "src": "static/pwa/icons/icon512.png", "type": "image/png", "sizes": "512x512" },

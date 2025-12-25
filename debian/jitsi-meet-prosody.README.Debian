@@ -1,7 +1,7 @@
-Prosody configuration for hoclientuc for Debian
+Prosody configuration for Hoc Lien Tuc for Debian
 ----------------------------
 
-hoclientuc is a WebRTC video conferencing application. This package contains 
-configuration of prosody which are needed for hoclientuc to work.
+Hoc Lien Tuc is a WebRTC video conferencing application. This package contains 
+configuration of prosody which are needed for Hoc Lien Tuc to work.
 
  -- Yasen Pramatarov <yasen@bluejimp.com>  Mon, 30 Jun 2014 23:05:18 +0100

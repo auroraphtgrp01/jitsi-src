@@ -378,7 +378,7 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
             width: 80px;
             height: 80px;
             border-radius: 8px;
-            background-image: url("https://hoclientuc.vn/assets/svg/logo_hoclientuc_notext.png");
+            background-image: url("https://Hoc Lien Tuc.vn/assets/svg/logo_Hoc Lien Tuc_notext.png");
             background-size: contain;
             background-repeat: no-repeat;
             background-position: center;
@@ -402,7 +402,9 @@ class WelcomePage extends AbstractWelcomePage<IProps> {
                         <div className="grid">
                             <div className="left-content">
                                 <h1 className="heading">Tính năng họp và gọi video dành cho tất cả mọi người</h1>
-                                <div className="subheading">Kết nối, cộng tác và ăn mừng ở bất cứ đâu với học liên tục</div>
+                                <div className="subheading">
+                                    Kết nối, cộng tác và ăn mừng ở bất cứ đâu với học liên tục
+                                </div>
 
                                 <div className="actions-row">
                                     <button

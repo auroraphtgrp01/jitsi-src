@@ -169,7 +169,7 @@ function _parseCalendarEntry(event: any, knownDomains: string[]) {
 }
 
 /**
- * Retrieves a hoclientuc URL from an event if present.
+ * Retrieves a Hoc Lien Tuc URL from an event if present.
  *
  * @param {Object} event - The event to parse.
  * @param {Array<string>} knownDomains - The known domain names.

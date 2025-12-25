@@ -1,11 +1,11 @@
 name: Feature request
-description: Suggest an idea for hoclientuc
+description: Suggest an idea for Hoc Lien Tuc
 labels: ["feature-request"]
 body:
     - type: markdown
       attributes:
           value: |
-              Thank you for suggesting an idea to make hoclientuc better.
+              Thank you for suggesting an idea to make Hoc Lien Tuc better.
 
               **Note**: the ultimate decision for implementing features lies on the Jitsi team, not all feature requests shall be accepted.
     - type: textarea

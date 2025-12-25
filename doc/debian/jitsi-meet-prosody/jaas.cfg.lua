@@ -1,4 +1,4 @@
--- Enables dial-in for hoclientuc components customers
+-- Enables dial-in for Hoc Lien Tuc components customers
 VirtualHost "jigasi.meet.jitsi"
     modules_enabled = {
         "ping";

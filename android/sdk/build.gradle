@@ -281,7 +281,7 @@ publishing {
             pom.withXml {
                 def pomXml = asNode()
                 pomXml.appendNode('name', 'jitsi-meet-sdk')
-                pomXml.appendNode('description', 'hoclientuc SDK for Android')
+                pomXml.appendNode('description', 'Hoc Lien Tuc SDK for Android')
                 def dependencies = pomXml.appendNode('dependencies')
                 configurations.getByName('releaseCompileClasspath').getResolvedConfiguration().getFirstLevelModuleDependencies().each {
                     // The (third-party) React Native modules that we depend on

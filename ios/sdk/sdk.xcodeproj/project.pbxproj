@@ -429,7 +429,7 @@
 			dependencies = (
 			);
 			name = JitsiMeetSDK;
-			productName = "hoclientuc SDK";
+			productName = "Hoc Lien Tuc SDK";
 			productReference = 0BD906E51EC0C00300C8C18E /* JitsiMeetSDK.framework */;
 			productType = "com.apple.product-type.framework";
 		};
@@ -451,7 +451,7 @@
 			dependencies = (
 			);
 			name = JitsiMeetSDKLite;
-			productName = "hoclientuc SDK";
+			productName = "Hoc Lien Tuc SDK";
 			productReference = DE9A016F289A9A9A00E41CBB /* JitsiMeetSDK.framework */;
 			productType = "com.apple.product-type.framework";
 		};

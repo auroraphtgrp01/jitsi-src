@@ -1,10 +1,10 @@
 import { IReduxState } from "../../app/types";
 
 /**
- * Checks if hoclientuc is running on Spot TV.
+ * Checks if Hoc Lien Tuc is running on Spot TV.
  *
  * @param {IReduxState} state - The redux state.
- * @returns {boolean} Whether or not hoclientuc is running on Spot TV.
+ * @returns {boolean} Whether or not Hoc Lien Tuc is running on Spot TV.
  */
 export function isSpotTV(state: IReduxState): boolean {
     const { defaultLocalDisplayName, iAmSpot } = state["features/base/config"] || {};

@@ -2,13 +2,13 @@
 
 **Hello there! 👋**
 
-We're thrilled that you're eager to contribute to **hoclientuc! ❤️**
+We're thrilled that you're eager to contribute to **Hoc Lien Tuc! ❤️**
 
 Your interest in improving our platform means a lot to us. To ensure your contributions align seamlessly with our goals and processes, we've recently updated our guide. This guide will provide you with clear instructions on how to get involved effectively.
 
 ### 📖 Get Started
 
-Ready to get started? Head over to our [hoclientuc Handbook](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-contributing/) and let's make **hoclientuc** even better together!
+Ready to get started? Head over to our [Hoc Lien Tuc Handbook](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-contributing/) and let's make **Hoc Lien Tuc** even better together!
 
 ### 💬 Join the Discussion
 

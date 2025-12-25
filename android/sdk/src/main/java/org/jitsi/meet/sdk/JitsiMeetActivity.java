@@ -250,7 +250,7 @@ public class JitsiMeetActivity extends AppCompatActivity
      * initialization is delayed and the {@link JitsiMeetActivity#initialize()} method is not
      * called. In this case, it's up to the subclass to call the initialize method when ready.
      * <p>
-     * This is mainly required so we do some extra initialization in the hoclientuc app.
+     * This is mainly required so we do some extra initialization in the Hoc Lien Tuc app.
      *
      * @return {@code true} if the initialization will be delayed, {@code false} otherwise.
      */

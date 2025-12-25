@@ -93,7 +93,7 @@ export default class IframeAPI extends BasePageObject {
     }
 
     /**
-     * Removes the embedded hoclientuc conference.
+     * Removes the embedded Hoc Lien Tuc conference.
      */
     dispose() {
         return this.participant.execute(() => window.jitsiAPI.dispose());

@@ -72,7 +72,7 @@ extension ViewController: @preconcurrency JitsiMeetViewDelegate {
            let conference = url.pathComponents.last {
             
             userActivity.title = "Join \(conference)"
-            userActivity.suggestedInvocationPhrase = "Join my hoclientucing"
+            userActivity.suggestedInvocationPhrase = "Join my Hoc Lien Tucing"
             userActivity.userInfo = ["url": urlStr]
             userActivity.isEligibleForSearch = true
             userActivity.isEligibleForPrediction = true

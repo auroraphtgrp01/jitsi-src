@@ -674,7 +674,7 @@ function initCommands() {
          * @param { string } arg.rtmpStreamKey - The RTMP stream key.
          * @param { string } arg.rtmpBroadcastID - The RTMP broadcast ID.
          * @param { boolean } arg.shouldShare - Whether the recording should be shared with the participants or not.
-         * Only applies to certain hoclientuc deploys.
+         * Only applies to certain Hoc Lien Tuc deploys.
          * @param { string } arg.youtubeStreamKey - The youtube stream key.
          * @param { string } arg.youtubeBroadcastID - The youtube broadcast ID.
          * @param { Object } arg.extraMetadata - Any extra metadata params for file recording.
@@ -1195,15 +1195,15 @@ function sanitizeMouseEvent(event) {
 
 /**
  * Implements API class that communicates with external API class and provides
- * interface to access hoclientuc features by external applications that embed
- * hoclientuc.
+ * interface to access Hoc Lien Tuc features by external applications that embed
+ * Hoc Lien Tuc.
  */
 class API {
     _enabled;
 
     /**
      * Initializes the API. Setups message event listeners that will receive
-     * information from external applications that embed hoclientuc. It also
+     * information from external applications that embed Hoc Lien Tuc. It also
      * sends a message to the external application that API is initialized.
      *
      * @param {Object} options - Optional parameters.

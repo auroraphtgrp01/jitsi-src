@@ -23,14 +23,14 @@ if (typeof API_ID === 'number') {
 }
 
 /**
- * The instance of Transport class that will be used by hoclientuc.
+ * The instance of Transport class that will be used by Hoc Lien Tuc.
  *
  * @type {Transport}
  */
 let transport;
 
 /**
- * Returns the instance of Transport class that will be used by hoclientuc.
+ * Returns the instance of Transport class that will be used by Hoc Lien Tuc.
  *
  * @returns {Transport}
  */

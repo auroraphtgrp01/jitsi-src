@@ -143,7 +143,7 @@ export function forEachConference(stateful: IStateful, predicate: (a: any, b: UR
         if (v && typeof v === "object") {
             const url: URL = v[JITSI_CONFERENCE_URL_KEY];
 
-            // XXX The Web version of hoclientuc does not utilize
+            // XXX The Web version of Hoc Lien Tuc does not utilize
             // JITSI_CONFERENCE_URL_KEY at the time of this writing. An
             // alternative is necessary then to recognize JitsiConference
             // instances and myUserId is as good as any other property.

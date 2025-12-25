@@ -19,7 +19,7 @@ fi
 
 export MVN_REPO=$THE_MVN_REPO
 
-echo "Releasing hoclientuc SDK ${SDK_VERSION}"
+echo "Releasing Hoc Lien Tuc SDK ${SDK_VERSION}"
 echo "Using ${MVN_REPO} as the Maven repo"
 
  if [[ $MVN_HTTP == 0 ]]; then
@@ -30,8 +30,8 @@ echo "Using ${MVN_REPO} as the Maven repo"
     fi
 fi
 
-# Now build and publish the hoclientuc SDK and its dependencies
-echo "Building and publishing the hoclientuc SDK"
+# Now build and publish the Hoc Lien Tuc SDK and its dependencies
+echo "Building and publishing the Hoc Lien Tuc SDK"
 pushd ${THIS_DIR}/../
 ./gradlew clean
 ./gradlew assembleRelease
@@ -42,7 +42,7 @@ popd
 if [[ $MVN_HTTP == 0 ]]; then
     pushd ${MVN_REPO_PATH}
     git add -A .
-    git commit -m "hoclientuc SDK + dependencies: ${SDK_VERSION}"
+    git commit -m "Hoc Lien Tuc SDK + dependencies: ${SDK_VERSION}"
     popd
 fi
 

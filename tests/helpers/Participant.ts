@@ -663,7 +663,7 @@ export class Participant {
     }
 
     /**
-     * Switches to the main frame context (outside the iFrame; where the hoclientuc iFrame API is available).
+     * Switches to the main frame context (outside the iFrame; where the Hoc Lien Tuc iFrame API is available).
      *
      * If this Participant was initialized with iFrameApi=false this has no effect, as there aren't any other contexts.
      */
@@ -672,7 +672,7 @@ export class Participant {
     }
 
     /**
-     * Switches to the iFrame context (inside the iFrame; where the hoclientuc application runs).
+     * Switches to the iFrame context (inside the iFrame; where the Hoc Lien Tuc application runs).
      *
      * If this Participant was initialized with iFrameApi=false this will result in an error.
      */

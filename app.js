@@ -1,4 +1,4 @@
-/* hoclientuc app main entrypoint. */
+/* Hoc Lien Tuc app main entrypoint. */
 
 // Re-export jQuery
 // FIXME: Remove this requirement from torture tests.

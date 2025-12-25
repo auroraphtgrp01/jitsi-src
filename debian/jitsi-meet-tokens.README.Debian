@@ -1,7 +1,7 @@
-Token authentication plugin for hoclientuc
+Token authentication plugin for Hoc Lien Tuc
 ----------------------------
 
-hoclientuc is a WebRTC video conferencing application. This package contains
-Prosody plugin which enables token authentication in hoclientuc installation.
+Hoc Lien Tuc is a WebRTC video conferencing application. This package contains
+Prosody plugin which enables token authentication in Hoc Lien Tuc installation.
 
  -- Pawel Domas <pawel.domas@jitsi.org>  Mon, 2 Nov 2015 14:45:00 -0600

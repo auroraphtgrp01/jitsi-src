@@ -50,4 +50,4 @@ body:
     - type: textarea
       attributes:
           label: More details?
-          description: Please provide more details in case they apply (such as the hoclientuc version you are running, if you are hosting your own server).
+          description: Please provide more details in case they apply (such as the Hoc Lien Tuc version you are running, if you are hosting your own server).

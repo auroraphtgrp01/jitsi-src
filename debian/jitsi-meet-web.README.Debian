@@ -1,7 +1,7 @@
-hoclientuc for Debian
+Hoc Lien Tuc for Debian
 ----------------------------
 
-This is a WebRTC frontend of the video conferencing tool hoclientuc. It depends on the
+This is a WebRTC frontend of the video conferencing tool Hoc Lien Tuc. It depends on the
 jitsi-videobridge package, which is a SFU (Selective Forwarding Unit) and both packages
 are designed to work together.
 

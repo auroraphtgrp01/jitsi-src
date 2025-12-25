@@ -1,7 +1,7 @@
 {
     "name": "@jitsi/react-native-sdk",
     "version": "0.0.0",
-    "description": "React Native SDK for hoclientuc.",
+    "description": "React Native SDK for Hoc Lien Tuc.",
     "main": "index.tsx",
     "license": "Apache-2.0",
     "author": "",
