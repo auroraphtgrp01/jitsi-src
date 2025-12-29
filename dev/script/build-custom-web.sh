@@ -10,7 +10,7 @@ PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 cd "$PROJECT_ROOT"
 
 # Configuration
-TAG="1.0.3"
+TAG="1.1.1"
 JITSI_MEET_DIR=".."
 DOCKER_DIR="."
 TEMP_BUILD_DIR="/tmp/jitsi-custom-build"
@@ -62,6 +62,15 @@ esac
 
 rm -rf "$TEMP_BUILD_DIR"
 mkdir -p "$TEMP_BUILD_DIR"
+
+# Check if libs directory exists (required after build)
+if [ ! -d "$JITSI_MEET_DIR/libs" ]; then
+    echo "❌ Error: libs directory not found!"
+    echo "   The libs directory is created after building Jitsi Meet."
+    echo "   Please run 'make' or 'make deploy' first to build the project."
+    echo "   Then run this script again."
+    exit 1
+fi
 
 echo "📦 Copying built assets..."
 cp -r "$JITSI_MEET_DIR/libs" "$TEMP_BUILD_DIR/"
